@@ -46,8 +46,7 @@ def get_alike_json(path):
             return json
 
 
-def update_image_creation_time(image_path):
-    # Get the timestamp from the JSON file
+def get_json_data(image_path):
     json_path = Path(move_duplication_string(image_path) + ".json")
     json_data = None
     try:
@@ -71,12 +70,16 @@ def update_image_creation_time(image_path):
                     print(f"Could not find JSON file for {image_path}")
                     return
                 # os.remove(image_path)
+    return json_data
+
+
+def update_image_metadata(image_path):
+    # Get the timestamp from the JSON file
+    json_data = get_json_data(image_path)
 
     timestamp = json_data['photoTakenTime']['timestamp']
     # Convert the timestamp from string to float
     timestamp = float(timestamp)
-    # Convert the timestamp to a datetime object
-    # dt = datetime.fromtimestamp(timestamp)
     # Update the image's creation time
     os.utime(image_path, (timestamp, timestamp))
 
@@ -88,6 +91,6 @@ for dirpath, dirnames, filenames in os.walk(path):
         if not filename.endswith('.json') and filename != '.DS_Store':
             file_path = os.path.join(dirpath, filename)
             try:
-                update_image_creation_time(file_path)
+                update_image_metadata(file_path)
             except:
                 print("Could not update image creation time for " + file_path)
