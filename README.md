@@ -29,7 +29,7 @@ There is no filtering in place to only look for image file extensions
 ## JSON naming
 
 At first, it lookes like for each `Image.ext` there is an associated `Image.ext.json` file. 
-However, while working on this I encoutered differet namings and included rules for them.
+However, while working on this I encoutered differet namings and included rules for them:
 
 1. Duplicate files
 
