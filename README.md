@@ -4,7 +4,7 @@ Usign [Google Takeout](https://takeout.google.com/settings/takeout) you can expo
 However, the while on google servers, the metadata from the files gets stripped from the images and put in separate JSONs. 
 
 This script is meant to add back the creation time of the images from their associated JSON files.
-The script can be easily modified to extract any piece of metadata from the image json.
+The script can be easily modified to extract any piece of metadata from the image json. This can be done by updating the `update_image_metadata` function
 
 ## Before running
 Before running the script I suggest downloading all the images you want to pull of Google Photos and running the script once for all of them. 
